@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NLP Tokenizer & Embedding Visualizer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div>
+      <h1>NLP Tokenizer & Embedding Visualizer</h1>
+      <p class="muted">Type any text to see how it splits into subword tokens, then compare how words land in a spelling-based map and a meaning-based map.</p>
+    </div>
+    <button id="theme" class="btn">Dark mode</button>
+  </header>
+
+  <div class="samples"><span class="muted">Load sample text:</span><span id="samples"></span></div>
+
+  <section>
+    <textarea id="text" placeholder="Type or paste text here…"></textarea>
+    <div class="stats">
+      <div class="card"><b id="sWords">0</b><span class="muted">Total words</span></div>
+      <div class="card"><b id="sTokens">0</b><span class="muted">Total tokens</span></div>
+      <div class="card"><b id="sVocab">0</b><span class="muted">Vocabulary size</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Tokens</h2>
+    <div id="pills" class="pills"></div>
+    <p class="muted small">Colors mark the position inside a word: root first, then each added piece. Red means unknown ([UNK]).</p>
+  </section>
+
+  <section class="card">
+    <div class="row"><h2>Tokenization table</h2><input id="search" placeholder="Search words…"></div>
+    <div id="tbl" class="tbl">
+      <table>
+        <thead><tr><th>Original word</th><th>Subword tokens</th><th>Token IDs</th><th>Frequency</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <h2>Embedding map</h2>
+      <div class="row">
+        <label class="small"><input type="checkbox" id="hide" checked> Hide common words</label>
+        <div class="tabs" id="tabs">
+          <button data-m="lex">Spelling</button>
+          <button data-m="sem">Meaning</button>
+          <button data-m="both" class="on">Side by side</button>
+        </div>
+      </div>
+    </div>
+    <div id="plots" class="plots"></div>
+    <div id="detail" class="card detail"></div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
